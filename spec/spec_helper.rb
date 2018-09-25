@@ -1,6 +1,7 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require_relative 'setup_test_database'
 
 require './app'
 require 'capybara'
@@ -9,6 +10,7 @@ require 'pry'
 # require_relative 'features/web_helpers.rb'
 
 ENV['RACK_ENV'] = 'test'
+ENV['BOOKMARKS'] = 'test'
 
 Capybara.app = BookmarkManager
 
@@ -24,6 +26,12 @@ RSpec.configure do |config|
     puts
     puts "\e[33mHave you considered running rubocop? It will help you improve your code!\e[0m"
     puts "\e[33mTry it now! Just run: rubocop\e[0m"
+  end
+end
+
+RSpec.configure do |config|
+  config.before(:each) do
+    setup_database
   end
 end
 

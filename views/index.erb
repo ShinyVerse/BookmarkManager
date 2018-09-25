@@ -1,6 +1,8 @@
 <h1>Bookmarks</h1>
-<ul>
-  <% [1,2,3].each do |num| %>
-    <li><%= num %></li>
+<ol>
+  <% @bookmarks.each do |url| %>
+    <li>
+      <a href=" <%= url %> "><%= url %></a>
+    </li>
   <% end %>
-</ul>
+</ol>
