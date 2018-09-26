@@ -11,7 +11,9 @@ class BookmarkManager < Sinatra::Base
   post '/save' do
     bookmark = Bookmarks.new
     bookmark.create(params['address'])
+    puts 'saved bookmark?'
+    puts bookmark.inspect
+    puts 'now redirecting...'
     redirect('/')
   end
-
 end

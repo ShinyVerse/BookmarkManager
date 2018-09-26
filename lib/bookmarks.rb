@@ -12,7 +12,11 @@ class Bookmarks
   end
 
   def create(url)
-    connection = PG.connect(dbname:'bookmark_manager')
+    if ENV['BOOKMARKS'] == 'test'
+      connection = PG.connect(dbname:'bookmark_manager_test')
+    else
+      connection = PG.connect(dbname:'bookmark_manager')
+    end
     connection.exec("INSERT INTO bookmarks (url) VALUES('#{url}')")
   end
 end
