@@ -9,7 +9,7 @@ require 'rspec'
 require 'pry'
 # require_relative 'features/web_helpers.rb'
 
-ENV['RACK_ENV'] = 'test'
+# ENV['RACK_ENV'] = 'test'
 ENV['BOOKMARKS'] = 'test'
 
 Capybara.app = BookmarkManager
