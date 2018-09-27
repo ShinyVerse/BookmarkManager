@@ -1,4 +1,5 @@
 require 'pg'
+require 'uri'
 
 class Bookmarks
   def self.all
@@ -11,7 +12,11 @@ class Bookmarks
     result.map {|bookmark| bookmark['url']}
   end
 
-  def create(url)
+  def self.check_url?(url)
+      url =~ /\A#{URI::regexp(['http', 'https'])}\z/
+  end
+
+  def self.create(url)
     if ENV['BOOKMARKS'] == 'test'
       connection = PG.connect(dbname:'bookmark_manager_test')
     else

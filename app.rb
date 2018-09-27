@@ -14,9 +14,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/save' do
-    if params['address'] =~ /\A#{URI::regexp(['http', 'https'])}\z/
-      bookmarks = Bookmarks.new
-      bookmarks.create(params['address'])
+    if Bookmarks.check_url?(params['address'])
+      Bookmarks.create(params['address'])
     else
       flash[:error_message] = "Error: Unknown URL"
     end
