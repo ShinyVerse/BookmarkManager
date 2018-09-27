@@ -15,7 +15,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/save' do
     if Bookmarks.check_url?(params['address'])
-      Bookmarks.create(params['address'])
+      Bookmarks.create(params['address'], params['title'])
     else
       flash[:error_message] = "Error: Unknown URL"
     end

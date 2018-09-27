@@ -1,8 +1,18 @@
 describe 'connecting to Database' do
-  it 'shows certain bookmarks' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-    connection.exec("INSERT INTO bookmarks (url) VALUES('www.etsy.com');")
-    bookmarks = Bookmarks.all
-    expect(bookmarks).to include('www.etsy.com')
+  context '#all' do
+    it 'returns an array of bookmarks' do
+      expect(Bookmarks.all).to be_an Array
+    end
   end
+
+  context '#check_url?' do
+    it 'checks url starts http or https' do
+      expect(Bookmarks.check_url?('http://www.pleasepass.com')).to eq 0
+    end
+
+    it 'throws error if url doesnt start with http or https' do
+      expect(Bookmarks.check_url?('www.pleasefail.com')).to eq nil
+    end
+  end
+
 end

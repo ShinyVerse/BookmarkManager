@@ -1,13 +1,14 @@
 <h1>Bookmarks</h1>
 <ol>
-  <% @bookmarks.each do |url| %>
+  <% @bookmarks.each do |bookmark| %>
     <li>
-      <a href="<%=url%>"><%=url%></a>
+      <a href="<%=bookmark['url']%>"><%=bookmark['title']%></a>
     </li>
   <% end %>
 </ol>
 
 <form action="/save" method="post">
+  <input type="text" name="title" />
   <input type="text" name="address" />
   <input type="submit" name="ADD" value="ADD"/>
 </form>
