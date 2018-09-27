@@ -19,6 +19,15 @@
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/laura/Projects/BookmarkManager/spec/feature/homepage_spec.rb": [
@@ -50,6 +59,6 @@
         null
       ]
     },
-    "timestamp": 1538057365
+    "timestamp": 1538061507
   }
 }

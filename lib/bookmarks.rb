@@ -24,4 +24,13 @@ class Bookmarks
     end
     connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}')") if check_url?(url)
   end
+
+  def self.delete_id(id)
+    if ENV['BOOKMARKS'] == 'test'
+      connection = PG.connect(dbname:'bookmark_manager_test')
+    else
+      connection = PG.connect(dbname:'bookmark_manager')
+    end
+    connection.exec("DELETE FROM bookmarks WHERE id = #{id}")
+  end
 end

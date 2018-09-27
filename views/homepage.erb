@@ -1,8 +1,16 @@
 <h1>Bookmarks</h1>
-<ol>
+<ol class='bookmarks'>
   <% @bookmarks.each do |bookmark| %>
     <li>
       <a href="<%=bookmark['url']%>"><%=bookmark['title']%></a>
+      <form action="/delete/<%=bookmark['id']%>" method="post">
+        <input type='hidden' name='_method' value="DELETE"/>
+        <input type="submit" value='delete'/>
+      </form>
+      <form action="/update/<%=bookmark['id']%>" method="post">
+        <input type='hidden' name='_method' value="DELETE"/>
+        <input type="submit" value='update'/>
+      </form>
     </li>
   <% end %>
 </ol>

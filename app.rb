@@ -6,6 +6,7 @@ require 'uri'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions
+  enable :method_override
   register Sinatra::Flash
 
   get '/' do
@@ -20,5 +21,10 @@ class BookmarkManager < Sinatra::Base
       flash[:error_message] = "Error: Unknown URL"
     end
     redirect('/')
+  end
+
+  delete '/delete/:id' do
+    Bookmarks.delete_id(params[:id])
+    redirect '/'
   end
 end
